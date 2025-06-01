@@ -1,9 +1,14 @@
 // src/routes/todos.ts
 import express from "express";
-import { getToDos } from "../controllers/todosController";
+import todosController from "../controllers/todosController";
 
 const router = express.Router();
 
-router.get("/", getToDos); // Ruta per recuperar tots els TODOs
+/*GET*/
+// Ruta per recuperar tots els TODOs
+router.get("/", todosController.getToDos);
+
+// Ruta per recuperar un TODO per id
+router.get("/:id", todosController.getToDo);
 
 export default router;
