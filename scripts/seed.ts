@@ -7,6 +7,7 @@ async function seed() {
   try {
     // Em connecto a la base de dades
     const db = await connectDB();
+    
 
     // Faig inserts
     await db.run(`INSERT INTO todos (titol, descripcio, completat, prioritat)

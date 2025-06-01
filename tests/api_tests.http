@@ -1,0 +1,3 @@
+
+### GET - Obtenir tots els TODOs
+GET http://localhost:3000/todos
