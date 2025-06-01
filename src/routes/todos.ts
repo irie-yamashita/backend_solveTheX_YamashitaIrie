@@ -5,11 +5,17 @@ import todosController from "../controllers/todosController";
 const router = express.Router();
 
 /*GET*/
-// Ruta per recuperar tots els TODOs
+// Per recuperar tots els TODOs
 router.get("/", todosController.getToDos);
 
-// Ruta per recuperar un TODO per id
+// Per recuperar un TODO per id
 router.get("/:id", todosController.getToDo);
+
+// Per recuperar els TODOs per prioritat
+router.get("/prioritat/:prioritat", todosController.getToDosPrioritat);
+
+
+
 
 /*POST*/
 router.post("/", todosController.createToDo);

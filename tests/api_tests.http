@@ -6,6 +6,11 @@ GET http://localhost:3000/todos
 GET http://localhost:3000/todos/1
 
 
+### GET - Obtenir un TODO per prioritat
+GET http://localhost:3000/todos/prioritat/alta
+
+
+
 ### POST - Crear un nou TODO - correcte
 POST http://localhost:3000/todos
 Content-Type: application/json

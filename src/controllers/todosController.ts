@@ -38,6 +38,27 @@ const todosController = {
         }
     },
 
+    async getToDosPrioritat(req: Request, res: Response) {
+
+        try {
+            let todos = [];
+            const db = req.app.locals.db;
+            // Agafo l'ID de la URL
+            const { prioritat } = req.params;
+
+            /*TODO: validar prioritats*/
+
+            //Faig consulta de manera segura (evitar injeccions SQL)
+            todos = await db.all("SELECT * FROM todos WHERE prioritat = ?", prioritat);
+
+            res.status(200).json(todos);
+
+        } catch (error) {
+            console.error("Error obtenint els TODOs per prioritat:", error);
+            res.status(500).json({ error: "Error en recuperar el TODOs per prioritat" });
+        }
+    },
+
     async createToDo(req: Request, res: Response) {
 
         try {
