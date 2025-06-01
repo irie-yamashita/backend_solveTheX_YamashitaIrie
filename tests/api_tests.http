@@ -35,3 +35,13 @@ Content-Type: application/json
 {
   "titol": "Nou TODO II"
 }
+
+
+### DELETE - Eliminar TODO - correcte
+DELETE http://localhost:3000/todos/1
+
+
+### DELETE - Eliminar TODO - error (falta id)
+DELETE http://localhost:3000/todos/23
+
+

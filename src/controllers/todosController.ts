@@ -38,7 +38,7 @@ const todosController = {
         }
     },
 
-    async createTodo(req: Request, res: Response) {
+    async createToDo(req: Request, res: Response) {
 
         try {
             // Extrec els valors enviats en el cos de la petició (req.body)
@@ -73,6 +73,27 @@ const todosController = {
         } catch (error) {
             console.error("Error creant el TODO:", error);
             res.status(500).json({ error: "Error al crear el TODO" });
+            return;
+        }
+    },
+
+    async deleteToDo(req: Request, res: Response) {
+        try {
+            const db = req.app.locals.db;
+            const { id } = req.params;
+
+            const result = await db.run("DELETE FROM todos WHERE id = ?", id);
+
+            //comprovo que s'hagi fet el DELETE (id inexistent)
+            if (!result || result.changes === 0) {
+                res.status(404).json({ error: "ID passat, no trobat" });
+            } else {
+                res.status(200).json({ message: "TODO eliminat correctament", id: id });
+            }
+
+        } catch (error) {
+            console.error("Error eliminant el TODO:", error);
+            res.status(500).json({ error: "Error en eliminar el TODO" });
             return;
         }
     }

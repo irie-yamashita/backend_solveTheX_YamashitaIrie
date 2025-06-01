@@ -12,6 +12,9 @@ router.get("/", todosController.getToDos);
 router.get("/:id", todosController.getToDo);
 
 /*POST*/
-router.post("/", todosController.createTodo);
+router.post("/", todosController.createToDo);
+
+/*DELETE*/
+router.delete("/:id", todosController.deleteToDo);
 
 export default router;
