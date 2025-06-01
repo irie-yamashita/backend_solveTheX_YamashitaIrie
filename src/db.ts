@@ -16,10 +16,10 @@ export const connectDB = async () => {
             CREATE TABLE IF NOT EXISTS todos (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 titol TEXT NOT NULL,
-                descripcio TEXT,
+                descripcio TEXT DEFAULT '',
                 completat BOOLEAN DEFAULT 0,
                 data_creacio DATETIME DEFAULT CURRENT_TIMESTAMP,
-                prioritat TEXT CHECK(prioritat IN ('alta', 'mitjana', 'baixa'))
+                prioritat TEXT CHECK(prioritat IN ('alta', 'mitjana', 'baixa')) DEFAULT 'baixa'
             );
         `);
 

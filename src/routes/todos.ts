@@ -11,4 +11,7 @@ router.get("/", todosController.getToDos);
 // Ruta per recuperar un TODO per id
 router.get("/:id", todosController.getToDo);
 
+/*POST*/
+router.post("/", todosController.createTodo);
+
 export default router;

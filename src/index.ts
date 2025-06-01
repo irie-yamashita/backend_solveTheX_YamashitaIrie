@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000; //si no especifico res, poso per defecte 
 app.use(express.json()); //per convertir body a json
 app.disable("x-powered-by");
 
-app.use("/todos", todosRoutes);
+
 
 app.get("/", async (req, res) => {
     try {
@@ -22,6 +22,7 @@ app.get("/", async (req, res) => {
     }
 });
 
+app.use("/todos", todosRoutes);
 
 app.listen(port, () => {
     console.log(`Servidor en funcionament a http://localhost:${port}`);

@@ -4,3 +4,34 @@ GET http://localhost:3000/todos
 
 ### GET - Obtenir un TODO per id
 GET http://localhost:3000/todos/1
+
+
+### POST - Crear un nou TODO - correcte
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+  "titol": "Nou TODO I",
+  "descripcio": "Això és un nou TODO creat per POST",
+  "completat": 0,
+  "prioritat": "alta"
+}
+
+### POST - Crear un nou TODO - error TÍTOL
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+  "descripcio": "Això és un nou TODO creat per POST",
+  "completat": 0,
+  "prioritat": "alta"
+}
+
+
+### POST - Crear un nou TODO - sense camps opcionals
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+  "titol": "Nou TODO II"
+}
