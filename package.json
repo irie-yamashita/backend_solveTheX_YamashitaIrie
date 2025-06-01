@@ -21,6 +21,7 @@
   "homepage": "https://github.com/irie-yamashita/backend_solveTheX_YamashitaIrie#readme",
   "dependencies": {
     "express": "^5.1.0",
+    "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
