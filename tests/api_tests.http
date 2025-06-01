@@ -36,6 +36,50 @@ Content-Type: application/json
   "titol": "Nou TODO II"
 }
 
+### PUT - Actualitzar TODO - completa
+PUT http://localhost:3000/todos/2
+Content-Type: application/json
+
+{
+  "titol": "TODO actualitzat",
+  "descripcio": "Modificació amb PUT",
+  "completat": 1,
+  "prioritat": "mitjana"
+}
+
+### PUT - Actualitzar TODO - alguns camps
+PUT http://localhost:3000/todos/2
+Content-Type: application/json
+
+{
+  "titol": "TODO actualitzat II",
+  "descripcio": "Modificació amb PUT :)",
+  "completat": 1,
+  "prioritat": "mitjana"
+}
+
+
+### PUT - Actualitzar TODO - error (falten camps)
+PUT http://localhost:3000/todos/2
+Content-Type: application/json
+
+{
+  "titol": "TODO actualitzat II",
+  "descripcio": "Modificació amb PUT :)"
+}
+
+### PUT - Actualitzar TODO - error (id inexistent)
+PUT http://localhost:3000/todos/23
+Content-Type: application/json
+
+{
+  "titol": "TODO actualitzat II",
+  "descripcio": "Modificació amb PUT :)",
+  "completat": 1,
+  "prioritat": "mitjana"
+}
+
+
 
 ### DELETE - Eliminar TODO - correcte
 DELETE http://localhost:3000/todos/1

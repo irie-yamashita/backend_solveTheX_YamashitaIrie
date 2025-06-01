@@ -14,6 +14,10 @@ router.get("/:id", todosController.getToDo);
 /*POST*/
 router.post("/", todosController.createToDo);
 
+/*UPDATE*/
+router.put("/:id", todosController.updateToDo);
+
+
 /*DELETE*/
 router.delete("/:id", todosController.deleteToDo);
 

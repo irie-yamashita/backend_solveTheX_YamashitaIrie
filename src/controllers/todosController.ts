@@ -77,6 +77,41 @@ const todosController = {
         }
     },
 
+    async updateToDo(req: Request, res: Response) {
+
+        try {
+            //Extrec id dels paràmetres
+            const { id } = req.params;
+            // Extrec els valors enviats en el cos de la petició
+            const { titol, descripcio, completat, prioritat } = req.body;
+
+            if (id == undefined || titol == undefined || descripcio == undefined || completat == undefined || prioritat == undefined) {
+                res.status(400).json({ error: "Falten camps" });
+                return;
+            }
+
+            const db = req.app.locals.db;
+            const result = await db.run(
+                "UPDATE todos SET titol = ?, descripcio = ?, completat = ?, prioritat = ? WHERE id = ?",
+                titol, descripcio, completat, prioritat, id
+            );
+
+            //comprovo que s'hagi fet l'UPDATE (id inexistent)
+            if (!result || result.changes === 0) {
+                res.status(404).json({ error: "ID passat, no trobat" });
+            } else {
+                //Torno resposta
+                res.status(201).json({ message: "TODO actualitzat correctament", id: id });
+            }
+
+        } catch (error) {
+            console.error("Error actualitzant el TODO:", error);
+            res.status(500).json({ error: "Error a l'actualitzar el TODO" });
+            return;
+        }
+    },
+
+
     async deleteToDo(req: Request, res: Response) {
         try {
             const db = req.app.locals.db;
@@ -101,3 +136,16 @@ const todosController = {
 };
 
 export default todosController;
+
+
+/*Status Code
+https://http.cat/
+
+200 -> OK
+201 -> Created
+
+400 -> Bad Request
+404 -> Not Found
+
+500 -> Internal Server Error
+*/
