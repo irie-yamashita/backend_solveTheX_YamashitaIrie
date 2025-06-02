@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { connectDB } from "./db";
 import todosRoutes from "./routes/todos";
 
@@ -8,6 +9,7 @@ const port = process.env.PORT || 3000; //si no especifico res, poso per defecte 
 
 app.use(express.json()); //per convertir body a json
 app.disable("x-powered-by");
+
 
 
 
@@ -22,6 +24,17 @@ app.get("/", async (req, res) => {
     }
 });
 
+// Per permetre peticions cross-origin (d'un altre servidor)
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+
+// Afegeixo les rutes
 app.use("/todos", todosRoutes);
 
 app.listen(port, () => {
