@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { connectDB } from "./db";
-import todosRoutes from "./routes/todos";
+import crearRoutes from "./routes/todos";
 
 const app = express();
 const port = process.env.PORT || 3000; //si no especifico res, poso per defecte el port 3000
@@ -9,20 +9,6 @@ const port = process.env.PORT || 3000; //si no especifico res, poso per defecte 
 
 app.use(express.json()); //per convertir body a json
 app.disable("x-powered-by");
-
-
-
-
-app.get("/", async (req, res) => {
-    try {
-        const db = await connectDB();
-        app.locals.db = db; // Guardo la db en `app.locals` per reutilitzar-la
-        res.send("Connexió db correcte i creació de taules feta!");
-    } catch (error) {
-        console.error("Error en la connexió a la BD:", error);
-        res.status(500).send("Error en la connexió a la base de dades.");
-    }
-});
 
 // Per permetre peticions cross-origin (d'un altre servidor)
 app.use(
@@ -34,9 +20,28 @@ app.use(
 );
 
 
-// Afegeixo les rutes
-app.use("/todos", todosRoutes);
+async function startServidor() {
+  try {
+    //Em connecto a la base de dades
+    const db = await connectDB();
+    app.locals.db = db; // Guardo la db en `app.locals` per reutilitzar-la
 
-app.listen(port, () => {
-    console.log(`Servidor en funcionament a http://localhost:${port}`);
-});
+    // Afegeixo les rutes
+    app.get("/", (req, res) => {
+      res.send("Benvingut/da a l'API. Utilitza /todos per accedir als TODOs.");
+    });
+    const router = crearRoutes(db);
+    app.use("/todos", router);
+
+
+    app.listen(port, () => {
+      console.log(`Servidor en funcionament a http://localhost:${port}`);
+    });
+
+  } catch (error) {
+    console.error("Error en la connexió a la base de dades", error);
+  }
+}
+startServidor();
+
+

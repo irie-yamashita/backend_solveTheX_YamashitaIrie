@@ -1,30 +1,33 @@
 // src/routes/todos.ts
 import express from "express";
-import todosController from "../controllers/todosController";
+import TodosController from "../controllers/todosController";
 
-const router = express.Router();
+const crearRoutes = (db: any)  => {
+    const router = express.Router();
+    const todosController = new TodosController(db);
 
-/*GET*/
-// Per recuperar tots els TODOs
-router.get("/", todosController.getToDos);
+    /*GET*/
+    // Per recuperar tots els TODOs
+    router.get("/", todosController.getToDos.bind(todosController));
 
-// Per recuperar un TODO per id
-router.get("/:id", todosController.getToDo);
+    // Per recuperar un TODO per id
+    router.get("/:id", todosController.getToDo.bind(todosController));
 
-// Per recuperar els TODOs per prioritat
-router.get("/prioritat/:prioritat", todosController.getToDosPrioritat);
+    // Per recuperar els TODOs per prioritat
+    router.get("/prioritat/:prioritat", todosController.getToDosPrioritat.bind(todosController));
 
+    /*POST*/
+    router.post("/", todosController.createToDo.bind(todosController));
 
-
-
-/*POST*/
-router.post("/", todosController.createToDo);
-
-/*UPDATE*/
-router.put("/:id", todosController.updateToDo);
+    /*UPDATE*/
+    router.put("/:id", todosController.updateToDo.bind(todosController));
 
 
-/*DELETE*/
-router.delete("/:id", todosController.deleteToDo);
+    /*DELETE*/
+    router.delete("/:id", todosController.deleteToDo.bind(todosController));
 
-export default router;
+    return router
+}
+
+
+export default crearRoutes;

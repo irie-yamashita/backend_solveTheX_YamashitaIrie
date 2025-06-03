@@ -3,12 +3,11 @@
 GET http://localhost:3000/todos
 
 ### GET - Obtenir un TODO per id
-GET http://localhost:3000/todos/1
+GET http://localhost:3000/todos/2
 
 
 ### GET - Obtenir un TODO per prioritat
 GET http://localhost:3000/todos/prioritat/alta
-
 
 
 ### POST - Crear un nou TODO - correcte
@@ -87,7 +86,7 @@ Content-Type: application/json
 
 
 ### DELETE - Eliminar TODO - correcte
-DELETE http://localhost:3000/todos/1
+DELETE http://localhost:3000/todos/2
 
 
 ### DELETE - Eliminar TODO - error (falta id)
