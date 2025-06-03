@@ -1,0 +1,49 @@
+### GET - Tots els usuaris
+GET http://localhost:3000/usuaris
+Content-Type: application/json
+
+
+### GET - Registrar usuari - correcte
+GET http://localhost:3000/usuaris/registrar
+Content-Type: application/json
+
+{
+  "username": "usuariTest",
+  "password": "contratest"
+}
+
+### Registrar usuari - error: usuari ja existent
+GET http://localhost:3000/usuaris/registrar
+Content-Type: application/json
+
+{
+  "username": "irie1234",
+  "password": "contra1234"
+}
+
+### Login d'usuari - correcte
+GET http://localhost:3000/usuaris/login
+Content-Type: application/json
+
+{
+  "username": "irie1234",
+  "password": "contra1234"
+}
+
+### Login - error: usuari inexistent
+GET http://localhost:3000/usuaris/login
+Content-Type: application/json
+
+{
+  "username": "irie12",
+  "password": "contra1234"
+}
+
+### Login - error: contrasenya incorrecte
+GET http://localhost:3000/usuaris/login
+Content-Type: application/json
+
+{
+  "username": "irie1234",
+  "password": "patata"
+}

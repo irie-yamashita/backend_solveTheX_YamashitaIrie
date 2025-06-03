@@ -1,6 +1,6 @@
 
 import { Request, Response } from "express";
-import TodosModel from "../models/todosModel";
+import TodosModel from "../models/TodosModel";
 
 export default class TodosController {
     //propietats

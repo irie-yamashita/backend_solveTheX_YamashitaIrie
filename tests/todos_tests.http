@@ -15,7 +15,7 @@ POST http://localhost:3000/todos
 Content-Type: application/json
 
 {
-  "titol": "Nou TODO I",
+  "titol": "Nou TODO Token",
   "descripcio": "Això és un nou TODO creat per POST",
   "completat": 0,
   "prioritat": "alta"

@@ -20,7 +20,7 @@ export default class TodosModel {
         return await this.db.all("SELECT * FROM todos WHERE prioritat = ?", prioritat);
     }
 
-    async createTodo(data: { [key: string]: any }) {
+    async createTodo(data: any) {
 
         // Creo consulta dinàmicament
         const camps = Object.keys(data);

@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
 import { connectDB } from "./db";
-import crearRoutes from "./routes/todos";
+import crearRoutesTodos from "./routes/todos";
+import crearRoutesUsers from "./routes/users";
 
 const app = express();
 const port = process.env.PORT || 3000; //si no especifico res, poso per defecte el port 3000
@@ -26,12 +27,16 @@ async function startServidor() {
     const db = await connectDB();
     app.locals.db = db; // Guardo la db en `app.locals` per reutilitzar-la
 
-    // Afegeixo les rutes
-    app.get("/", (req, res) => {
+    // Afegeixo les rutes dels todos amb "/todos"
+    app.get("/", (req, res) => { 
       res.send("Benvingut/da a l'API. Utilitza /todos per accedir als TODOs.");
     });
-    const router = crearRoutes(db);
+    const router = crearRoutesTodos(db);
     app.use("/todos", router);
+
+  // Afegeix el router per als usuaris amb "/usuaris"
+  const routerUsers = crearRoutesUsers(db);
+  app.use("/usuaris", routerUsers);
 
 
     app.listen(port, () => {

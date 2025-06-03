@@ -1,6 +1,8 @@
 // src/routes/todos.ts
 import express from "express";
-import TodosController from "../controllers/todosController";
+import TodosController from "../controllers/TodosController";
+import { tokenAutentificador } from "../middleware/jwt";
+
 
 const crearRoutes = (db: any)  => {
     const router = express.Router();
@@ -17,14 +19,14 @@ const crearRoutes = (db: any)  => {
     router.get("/prioritat/:prioritat", todosController.getToDosPrioritat.bind(todosController));
 
     /*POST*/
-    router.post("/", todosController.createToDo.bind(todosController));
+    router.post("/", tokenAutentificador, todosController.createToDo.bind(todosController));
 
     /*UPDATE*/
-    router.put("/:id", todosController.updateToDo.bind(todosController));
+    router.put("/:id", tokenAutentificador, todosController.updateToDo.bind(todosController));
 
 
     /*DELETE*/
-    router.delete("/:id", todosController.deleteToDo.bind(todosController));
+    router.delete("/:id", tokenAutentificador, todosController.deleteToDo.bind(todosController));
 
     return router
 }
