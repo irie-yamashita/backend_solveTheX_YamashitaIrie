@@ -11,10 +11,10 @@ const crearRoutes = (db: any)  => {
     router.get("/", controlador.getUsuaris.bind(controlador));
 
     // Per registrar usuaris
-    router.get("/registrar", controlador.registrar.bind(controlador));
+    router.post("/", controlador.registrar.bind(controlador));
 
     // Per iniciar sessió (login)
-    router.get("/login", controlador.login.bind(controlador));
+    router.post("/login", controlador.login.bind(controlador));
 
 
     return router

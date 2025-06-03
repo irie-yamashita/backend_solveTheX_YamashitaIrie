@@ -3,8 +3,8 @@ GET http://localhost:3000/usuaris
 Content-Type: application/json
 
 
-### GET - Registrar usuari - correcte
-GET http://localhost:3000/usuaris/registrar
+### POST - Registrar usuari: solveTheX
+POST http://localhost:3000/usuaris/registrar
 Content-Type: application/json
 
 {
@@ -12,8 +12,17 @@ Content-Type: application/json
   "password": "reto"
 }
 
-### Registrar usuari - error: usuari ja existent
-GET http://localhost:3000/usuaris/registrar
+### POST - Registrar usuari: prova
+POST http://localhost:3000/usuaris
+Content-Type: application/json
+
+{
+  "username": "prova",
+  "password": "1234"
+}
+
+### POST - Registrar usuari - error: usuari ja existent
+POST http://localhost:3000/usuaris/registrar
 Content-Type: application/json
 
 {
@@ -21,8 +30,9 @@ Content-Type: application/json
   "password": "contra1234"
 }
 
-### Login d'usuari - correcte
-GET http://localhost:3000/usuaris/login
+
+### POST - Login d'usuari: correcte
+POST http://localhost:3000/usuaris/login
 Content-Type: application/json
 
 {
@@ -30,8 +40,8 @@ Content-Type: application/json
   "password": "reto"
 }
 
-### Login - error: usuari inexistent
-GET http://localhost:3000/usuaris/login
+### POST - Login: usuari inexistent
+POST http://localhost:3000/usuaris/login
 Content-Type: application/json
 
 {
@@ -39,8 +49,8 @@ Content-Type: application/json
   "password": "contra1234"
 }
 
-### Login - error: contrasenya incorrecte
-GET http://localhost:3000/usuaris/login
+### POST - Login: contrasenya incorrecte
+POST http://localhost:3000/usuaris/login
 Content-Type: application/json
 
 {

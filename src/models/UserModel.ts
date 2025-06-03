@@ -5,6 +5,7 @@ export class UserModel {
 
   constructor(db: Database) {
     this.db = db;
+    
   }
 
   async getUsers() {
