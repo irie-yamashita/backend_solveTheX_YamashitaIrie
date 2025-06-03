@@ -2,6 +2,7 @@
 /*Fitxer per fer inserts inicials (proves)*/
 
 import { connectDB } from "../src/db";
+import bcrypt from "bcrypt"; //per encriptar contrasenyes
 
 async function seed() {
   try {
@@ -15,6 +16,12 @@ async function seed() {
 
     await db.run(`INSERT INTO todos (titol, descripcio, completat, prioritat)
         VALUES ("Entrenar futbol sala", "Sessió d'entrenament de futbol sala amb l'equip", 0, "mitjana")`);
+
+    const contra1 = await bcrypt.hash("contra1234", 5);  
+    const contra2 = await bcrypt.hash("agora307", 5);
+
+    await db.run(`INSERT INTO users (username, password) VALUES ("irie1234", "${contra1}")`);
+    await db.run(`INSERT INTO users (username, password) VALUES ("itb2425", "${contra2}")`);
 
     console.log("Inserts fets correctament!");
     

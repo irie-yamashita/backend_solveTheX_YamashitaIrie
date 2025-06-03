@@ -21,6 +21,15 @@ export const connectDB = async () => {
                 data_creacio DATETIME DEFAULT CURRENT_TIMESTAMP,
                 prioritat TEXT CHECK(prioritat IN ('alta', 'mitjana', 'baixa')) DEFAULT 'baixa'
             );
+            
+        `);
+
+        await db.exec(`
+            CREATE TABLE  IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL
+            );
         `);
 
         console.log("Base de dades connectada i taula creada!");
