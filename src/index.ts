@@ -14,7 +14,7 @@ app.disable("x-powered-by");
 // Per permetre peticions cross-origin (d'un altre servidor)
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
