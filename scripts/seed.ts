@@ -20,7 +20,7 @@ async function seed() {
     const contra1 = await bcrypt.hash("contra1234", 5);  
     const contra2 = await bcrypt.hash("agora307", 5);
 
-    await db.run(`INSERT INTO users (username, password) VALUES ("irie1234", "${contra1}")`);
+    await db.run(`INSERT INTO users (username, password) VALUES ("irie2004", "${contra1}")`);
     await db.run(`INSERT INTO users (username, password) VALUES ("itb2425", "${contra2}")`);
 
     console.log("Inserts fets correctament!");

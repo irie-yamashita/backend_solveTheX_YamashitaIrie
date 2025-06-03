@@ -10,7 +10,21 @@ GET http://localhost:3000/todos/2
 GET http://localhost:3000/todos/prioritat/alta
 
 
+
+
 ### POST - Crear un nou TODO - correcte
+POST http://localhost:3000/todos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQ4OTQ2MzI5fQ.Jpc70E2KYDsHPEdx-X1s1xLXHyzlrKHLSFKqovtHulQ
+
+{
+  "titol": "Nou TODO Token",
+  "descripcio": "Això és un nou TODO creat per POST",
+  "completat": 0,
+  "prioritat": "alta"
+}
+
+### POST - Crear un nou TODO - error: jwt
 POST http://localhost:3000/todos
 Content-Type: application/json
 
@@ -21,9 +35,11 @@ Content-Type: application/json
   "prioritat": "alta"
 }
 
+
 ### POST - Crear un nou TODO - error TÍTOL
 POST http://localhost:3000/todos
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQ4OTQ2MzI5fQ.Jpc70E2KYDsHPEdx-X1s1xLXHyzlrKHLSFKqovtHulQ
 
 {
   "descripcio": "Això és un nou TODO creat per POST",
@@ -35,14 +51,19 @@ Content-Type: application/json
 ### POST - Crear un nou TODO - sense camps opcionals
 POST http://localhost:3000/todos
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQ4OTQ2MzI5fQ.Jpc70E2KYDsHPEdx-X1s1xLXHyzlrKHLSFKqovtHulQ
 
 {
   "titol": "Nou TODO II"
 }
 
-### PUT - Actualitzar TODO - completa
-PUT http://localhost:3000/todos/2
+
+
+
+### PUT - Actualitzar TODO - correcte
+PUT http://localhost:3000/todos/4
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQ4OTQ2MzI5fQ.Jpc70E2KYDsHPEdx-X1s1xLXHyzlrKHLSFKqovtHulQ
 
 {
   "titol": "TODO actualitzat",
@@ -52,20 +73,23 @@ Content-Type: application/json
 }
 
 ### PUT - Actualitzar TODO - alguns camps
-PUT http://localhost:3000/todos/2
+PUT http://localhost:3000/todos/4
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQ4OTQ2MzI5fQ.Jpc70E2KYDsHPEdx-X1s1xLXHyzlrKHLSFKqovtHulQ
 
 {
   "titol": "TODO actualitzat II",
-  "descripcio": "Modificació amb PUT :)",
+  "descripcio": "Modificació amb PUT ",
   "completat": 1,
-  "prioritat": "mitjana"
+  "prioritat": "alta"
 }
 
 
 ### PUT - Actualitzar TODO - error (falten camps)
 PUT http://localhost:3000/todos/2
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQ4OTQ2MzI5fQ.Jpc70E2KYDsHPEdx-X1s1xLXHyzlrKHLSFKqovtHulQ
+
 
 {
   "titol": "TODO actualitzat II",
@@ -75,6 +99,8 @@ Content-Type: application/json
 ### PUT - Actualitzar TODO - error (id inexistent)
 PUT http://localhost:3000/todos/23
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQ4OTQ2MzI5fQ.Jpc70E2KYDsHPEdx-X1s1xLXHyzlrKHLSFKqovtHulQ
+
 
 {
   "titol": "TODO actualitzat II",
@@ -86,10 +112,13 @@ Content-Type: application/json
 
 
 ### DELETE - Eliminar TODO - correcte
-DELETE http://localhost:3000/todos/2
+DELETE http://localhost:3000/todos/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQ4OTQ2MzI5fQ.Jpc70E2KYDsHPEdx-X1s1xLXHyzlrKHLSFKqovtHulQ
 
 
-### DELETE - Eliminar TODO - error (falta id)
+
+### DELETE - Eliminar TODO - error (id inexistent)
 DELETE http://localhost:3000/todos/23
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQ4OTQ2MzI5fQ.Jpc70E2KYDsHPEdx-X1s1xLXHyzlrKHLSFKqovtHulQ
 
 

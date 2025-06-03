@@ -8,8 +8,8 @@ GET http://localhost:3000/usuaris/registrar
 Content-Type: application/json
 
 {
-  "username": "usuariTest",
-  "password": "contratest"
+  "username": "solveTheX",
+  "password": "reto"
 }
 
 ### Registrar usuari - error: usuari ja existent
@@ -26,8 +26,8 @@ GET http://localhost:3000/usuaris/login
 Content-Type: application/json
 
 {
-  "username": "irie1234",
-  "password": "contra1234"
+  "username": "solveTheX",
+  "password": "reto"
 }
 
 ### Login - error: usuari inexistent
