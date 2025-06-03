@@ -4,7 +4,7 @@ Content-Type: application/json
 
 
 ### POST - Registrar usuari: solveTheX
-POST http://localhost:3000/usuaris/registrar
+POST http://localhost:3000/usuaris
 Content-Type: application/json
 
 {
@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ### POST - Registrar usuari - error: usuari ja existent
-POST http://localhost:3000/usuaris/registrar
+POST http://localhost:3000/usuaris
 Content-Type: application/json
 
 {

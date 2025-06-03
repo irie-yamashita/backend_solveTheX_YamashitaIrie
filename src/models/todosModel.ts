@@ -9,7 +9,7 @@ export default class TodosModel {
     }
 
     async getAll() {
-        return await this.db.all("SELECT * FROM todos");
+        return await this.db.all("SELECT * FROM todos ORDER BY completat ASC");
     }
 
     async getById(id: number) {
