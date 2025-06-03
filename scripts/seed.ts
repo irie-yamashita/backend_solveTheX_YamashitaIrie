@@ -12,16 +12,35 @@ async function seed() {
 
     // Faig inserts
     await db.run(`INSERT INTO todos (titol, descripcio, completat, prioritat)
-        VALUES ("Comprar pa", "Anar al forn de pa i comparar una barra de pa.", 0, "alta")`);
+    VALUES ("Repte web", "Entregar repte web Solve The X", 1, "alta")`);
 
     await db.run(`INSERT INTO todos (titol, descripcio, completat, prioritat)
-        VALUES ("Entrenar futbol sala", "Sessió d'entrenament de futbol sala amb l'equip", 0, "mitjana")`);
+    VALUES ("Comprar pa", "Anar al forn de pa i comparar una barra.", 1, "baixa")`);
 
-    const contra1 = await bcrypt.hash("contra1234", 5);  
+    await db.run(`INSERT INTO todos (titol, descripcio, completat, prioritat)
+    VALUES ("Entrenar futbol sala", "Sessió d'entrenament de futbol sala amb l'equip", 1, "mitjana")`);
+
+    await db.run(`INSERT INTO todos (titol, descripcio, completat, prioritat)
+    VALUES ("Classes", "Preparar següent classe de matemàtiques", 0, "mitjana")`);
+
+    await db.run(`INSERT INTO todos (titol, descripcio, completat, prioritat)
+    VALUES ("Trucar a l'àvia", "Fer una trucada ràpida per veure com està", 0, "alta")`);
+
+    await db.run(`INSERT INTO todos (titol, descripcio, completat, prioritat)
+    VALUES ("Fer còpia de seguretat", "Guardar tots els arxius importants en un disc extern", 0, "mitjana")`);
+
+    await db.run(`INSERT INTO todos (titol, descripcio, completat, prioritat)
+    VALUES ("Sopar classe", "Trobar restaurant per sopar amb la classe", 0, "baixa")`);
+
+
+    const contra1 = await bcrypt.hash("2004", 5);  
     const contra2 = await bcrypt.hash("agora307", 5);
+    const contra3 = await bcrypt.hash("reto", 5);
 
-    await db.run(`INSERT INTO users (username, password) VALUES ("irie2004", "${contra1}")`);
-    await db.run(`INSERT INTO users (username, password) VALUES ("itb2425", "${contra2}")`);
+    await db.run(`INSERT INTO users (username, password) VALUES ("irie", "${contra1}")`);
+    await db.run(`INSERT INTO users (username, password) VALUES ("itb", "${contra2}")`);
+    await db.run(`INSERT INTO users (username, password) VALUES ("solveTheX", "${contra3}")`);
+
 
     console.log("Inserts fets correctament!");
     
